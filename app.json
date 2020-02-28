@@ -1,13 +1,12 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "MealsApp",
     "slug": "MealsApp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,13 +17,19 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 5000
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zenithmanuel.mealsapp",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "versionCode": 1,
+      "package": "com.zenithmanuel.mealsapp"
     }
   }
 }
