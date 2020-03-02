@@ -2,16 +2,17 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {View, StyleSheet, Text, Switch} from 'react-native';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/CustomHeaderButton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../stores/actions/meals';
 
 const FiltersScreen = props => {
+    // const filters = useSelector(state => state.meals.filters);
     const [isGlutenFree, setIsGlutenFree] = useState(false);
     const [isVegan, setIsVegan] = useState(false);
     const [isVegetarian, setIsVegetarian] = useState(false);
     const [isLactoseFree, setIsLactoseFree] = useState(false);
     const dispatch = useDispatch();
-
+    
     const saveFilterHandler = useCallback(() => {
         const filters = {
             glutenFree: isGlutenFree,
@@ -24,6 +25,7 @@ const FiltersScreen = props => {
 
     useEffect(()=>{
         props.navigation.setParams({saveFilter: saveFilterHandler})
+        console.log("useeffect triggered")
     }, [saveFilterHandler])
 
     // useEffect(()=>{
@@ -69,6 +71,7 @@ const FiltersScreen = props => {
                     onValueChange={()=>{setIsLactoseFree(!isLactoseFree)}}
                 />
             </View>
+            <Text style={{marginTop: 15}}>Hit save to apply filters.</Text>
         </View>
     )
 }
@@ -77,6 +80,9 @@ FiltersScreen.navigationOptions = navData => {
     const saveFilter = navData.navigation.getParam("saveFilter");
     return {
         headerTitle: "Set Filters",
+        headerTitleStyle: {
+            color: "white"
+        },
         headerStyle: {
             backgroundColor: "blue"
         },
@@ -89,6 +95,7 @@ FiltersScreen.navigationOptions = navData => {
                         onPress={() => {
                             navData.navigation.toggleDrawer();
                         }}
+                        color="white"
                     />
                 </HeaderButtons>
             )
@@ -130,7 +137,8 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     headtxt: {
-        fontSize: 25
+        fontSize: 25,
+        marginBottom: 10
     }
 })
 

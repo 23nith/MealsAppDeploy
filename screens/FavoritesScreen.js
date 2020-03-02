@@ -42,6 +42,9 @@ const FavoritesScreen = props => {
 FavoritesScreen.navigationOptions = navData => {
     return {
         headerTitle: "Favorites",
+        headerTitleStyle: {
+            color: "white"
+        },
         headerStyle: {
             backgroundColor: "red"
         },
@@ -54,6 +57,7 @@ FavoritesScreen.navigationOptions = navData => {
                         onPress={() => {
                             navData.navigation.toggleDrawer();
                         }}
+                        color="white"
                     />
                 </HeaderButtons>
             )

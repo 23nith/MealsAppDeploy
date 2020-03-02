@@ -3,8 +3,8 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const ItemTile = props => {
     return (
-        <View style={{...props.style, ...styles.container}}>
-            <TouchableOpacity style={styles.card} onPress={props.onSelect}>
+        <View style={{...styles.container}}>
+            <TouchableOpacity style={{...styles.card, ...props.style}} onPress={props.onSelect} disabled={props.disabled}>
                 {/* <Text>{props.title}</Text> */}
                 {props.children}
             </TouchableOpacity>
@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         elevation: 8,
         borderRadius: 5,
-        height: 150,
+        // height: 150,
         backgroundColor: "white",
         // borderWidth: 2,
         // borderColor: "green",
-        padding: 20,
+        // padding: 20,
         overflow: "hidden"
     },
 })
