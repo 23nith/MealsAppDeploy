@@ -19,8 +19,10 @@ const MainScreen = props => {
                             }
                         })
                     }
-                }>
-                <Text>
+                }
+                style={{backgroundColor: itemData.item.color, ...styles.tile}}
+            >
+                <Text style={styles.txt}>
                     {itemData.item.title}
                 </Text>
             </ItemTile>
@@ -37,8 +39,11 @@ const MainScreen = props => {
 
 MainScreen.navigationOptions = navData => {
     return {
+        headerTitleStyle: {
+          color: "white"
+        },
         headerStyle: {
-            backgroundColor: "red"
+            backgroundColor: "red",
         },
         headerLeft: () => {
             return (
@@ -49,6 +54,7 @@ MainScreen.navigationOptions = navData => {
                         onPress={() => {
                             navData.navigation.toggleDrawer();
                         }}
+                        color="white"
                     />
                 </HeaderButtons>
             )
@@ -66,8 +72,14 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     tile: {
-        width: "50%",
-        marginVertical: 20
+        // width: "50%",
+        // marginVertical: 20,
+        padding: 20,
+        height: 150
+    },
+    txt: {
+        fontSize: 23,
+        color: "white"
     }
 })
 

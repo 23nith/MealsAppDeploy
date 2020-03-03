@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {View, StyleSheet, Text, FlatList, Image} from 'react-native';
+import {View, StyleSheet, Text, FlatList, Image, ImageBackground} from 'react-native';
 import ItemTile from '../components/ItemTile';
 // import { MEALS } from '../data/dummy-data';
 import { useSelector } from 'react-redux';
@@ -28,11 +28,12 @@ const CategoryScreen = props => {
                         id: itemData.item.id
                     }
                 })
-            }}
-                style={{backgroundColor: itemData.item.color}}
+            }}    
             >
-                <Text>{itemData.item.title}</Text>
-                <Image source={{uri: itemData.item.imageUrl}} style={styles.img}/>
+                <ImageBackground source={{uri: itemData.item.imageUrl}} style={styles.img}>
+                    <Text style={styles.txt}>{itemData.item.title}</Text>
+                </ImageBackground>
+                {/* <Image source={{uri: itemData.item.imageUrl}} style={styles.img}/> */}
             </ItemTile>
         )
     }
@@ -47,8 +48,12 @@ const CategoryScreen = props => {
 CategoryScreen.navigationOptions = navData => {
     return {
         headerTitle: navData.navigation.getParam("title"),
+        headerTitleStyle: {
+            color: "white"
+        },
+        headerTintColor: "white",
         headerStyle: {
-            backgroundColor: "red"
+            backgroundColor: "red",
         }
     }
 }
@@ -61,7 +66,13 @@ const styles = StyleSheet.create({
     },
     img: {
         width: "100%",
-        height: 150
+        height: 150,
+        // padding: 20
+    },
+    txt: {
+        margin: 20,
+        color: "white",
+        fontSize: 30
     }
 })
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, ImageBackground} from 'react-native';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/CustomHeaderButton';
 import ItemTile from '../components/ItemTile';
@@ -25,8 +25,11 @@ const FavoritesScreen = props => {
                     }
                 })
             }}>
-                <Text>{itemData.item.title}</Text>
-                <Image source={{uri: itemData.item.imageUrl}} style={styles.img}/>
+                {/* <Text>{itemData.item.title}</Text>
+                <Image source={{uri: itemData.item.imageUrl}} style={styles.img}/> */}
+                <ImageBackground source={{uri: itemData.item.imageUrl}} style={styles.img}>
+                    <Text style={styles.txt}>{itemData.item.title}</Text>
+                </ImageBackground>
             </ItemTile>
         )
     }
@@ -42,6 +45,9 @@ const FavoritesScreen = props => {
 FavoritesScreen.navigationOptions = navData => {
     return {
         headerTitle: "Favorites",
+        headerTitleStyle: {
+            color: "white"
+        },
         headerStyle: {
             backgroundColor: "red"
         },
@@ -54,6 +60,7 @@ FavoritesScreen.navigationOptions = navData => {
                         onPress={() => {
                             navData.navigation.toggleDrawer();
                         }}
+                        color="white"
                     />
                 </HeaderButtons>
             )
@@ -70,6 +77,11 @@ const styles = StyleSheet.create({
     img: {
         width: "100%",
         height: 150
+    },
+    txt: {
+        margin: 20,
+        color: "white",
+        fontSize: 30
     }
 })
 
